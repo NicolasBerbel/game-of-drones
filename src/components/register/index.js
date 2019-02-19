@@ -19,7 +19,7 @@ class Register extends Component {
     
     if ( target.checkValidity() ) this.handleValid.call(this, arguments);
 
-    this.props.onEditPlayer( name, value );
+    this.props.editPlayer( name, value );
   }
 
   handleValid(){
@@ -39,28 +39,28 @@ class Register extends Component {
 
     if ( !isValid ) return;
 
-    this.props.onStart();
+    this.props.startGame( players );
   }
 
   render() {
     return (
       <div className="Register">
-        {Object.keys(this.props.players).map( (playerId) => {
-          const player = this.props.players[playerId];
-          return (<div key={playerId}>
+        {Object.keys(this.props.players).map( (id) => {
+          const player = this.props.players[id];
+          return (<div key={id}>
             {player.title}: 
             <input
               type="text"
-              name={playerId}
+              name={id}
               value={player.name}
-              onChange={this.handleChange.bind(this)}
-              onInvalid={this.handleInvalid.bind(this)}
+              onChange={this.handleChange}
+              onInvalid={this.handleInvalid}
               required
               />
           </div>);
         })}
         <div>
-          <button onClick={this.handleStart.bind(this)}>Start!</button>
+          <button onClick={this.handleStart}>Start!</button>
         </div>
       </div>
     );

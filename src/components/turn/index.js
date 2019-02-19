@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Moves from './Moves';
+import Moves from '../../components/moves';
 
 class Turn extends Component {
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Turn from './Turn';
+import Turn from '../../components/turn';
 
 class Round extends Component {
   constructor( props ) {

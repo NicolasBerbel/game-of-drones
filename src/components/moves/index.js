@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 
 class Moves extends Component {
-  constructor( props ) {
-    super(props);
-
-    this.state = {
-      move: null,
-    };
-  }
-
   handleClick( moveId ) {
     this.props.onSelected( moveId );
   }
