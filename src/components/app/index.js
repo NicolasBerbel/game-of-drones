@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import GameContainer from '../../containers/game';
 import RegisterContainer from '../../containers/register';
 import StatisticsContainer from '../../containers/statistics';

@@ -2,12 +2,34 @@ import { actions } from '../actions';
 
 const initialState = {
   started: false,
-  round: 0,
+  startedAt: null,
+  finished: false,
+  finishedAt: null,
+  round: 1,
   players: {},
   winner: null,
   scores: {},
   rounds: [],
 };
+
+function computeScores( rounds ) {
+  const scores = rounds.reduce((acc, round) => {
+    if (round.winner) {
+      acc[round.winner] = acc[round.winner] || 0;
+      acc[round.winner]++;
+    }
+
+    return acc;
+  }, {});
+  return scores;
+}
+
+function checkWinner( scores, roundsToWin ) {
+  return Object.keys(scores).reduce((acc, playerId) => {
+    if (scores[playerId] === roundsToWin) acc = playerId;
+    return acc;
+  }, false);
+}
 
 export default function game(state = initialState, action) {
   switch (action.type) {
@@ -15,26 +37,36 @@ export default function game(state = initialState, action) {
       return {
         ...state,
         started: true,
-        round: 1,
+        startedAt: new Date().getTime(),
         players: action.players
       };
     case actions.END_GAME:
       return {
         ...state,
-        ...action.game,
-        round: 0,
+        finished: true,
+        finishedAt: new Date().getTime(),
+        winner: action.game.winner
       };
     case actions.RESTART_GAME:
       return initialState;
     case actions.END_ROUND:
-      return {
+      const rounds = [
+        ...state.rounds,
+        action.round,
+      ];
+      const scores = computeScores( rounds );
+      const winner = checkWinner( scores, 3 );
+
+      const game = {
         ...state,
-        round: state.round + 1,
-        rounds: [
-          ...state.rounds,
-          action.round,
-        ],
+        rounds,
+        scores,
+        winner,
       };
+
+      if ( !winner ) game.round = state.round + 1;
+
+      return game;
     case actions.UPDATE_SCORES:
       return {
         ...state,

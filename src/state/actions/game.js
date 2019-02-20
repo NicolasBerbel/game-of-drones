@@ -7,7 +7,7 @@ export function startGame( players ) {
 }
 
 export const END_GAME = 'END_GAME';
-export function endGame(game) {
+export function endGame( game ) {
   return {
     type: END_GAME,
     game
