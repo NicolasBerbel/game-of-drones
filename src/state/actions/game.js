@@ -1,8 +1,9 @@
 export const START_GAME = 'START_GAME';
-export function startGame( players ) {
+export function startGame( game ) {
   return {
     type: START_GAME,
-    players,
+    players: game.players,
+    moves: game.moves,
   };
 }
 

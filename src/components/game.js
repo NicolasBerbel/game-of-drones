@@ -18,7 +18,7 @@ class Game extends Component {
 
   render() {
     const { game, moves, players, endRound, restartGame } = this.props;
-    const { finished, round, rounds, winner } = game;
+    const { finished, round, winner } = game;
     return (
       <div className="game">
         <div className="game__board">
@@ -35,7 +35,7 @@ class Game extends Component {
           }
           </div>
         </div>
-        <Scores {...{players, rounds, moves, game}} />
+        <Scores {...{game}} />
       </div>
     );
   }

@@ -3,7 +3,8 @@ import ordinalIndicator from '../helpers/ordinal-indicator';
 
 class Scores extends Component {
   render() {
-    const { rounds, moves, players, game } = this.props;
+    const { game } = this.props;
+    const { rounds, players, moves } = game;
     return (
     <div className="scores">
       {!!rounds.length && <>
@@ -38,7 +39,7 @@ class Scores extends Component {
             <div key={round.round} className="scores__item">
               <div className="scores__info">
                 <span className="scores__round"><b>{ordinalIndicator(round.round)}</b>: </span>
-                <span className={round.winner ? "scores__player" : "scores__draw"}>{round.winner ? this.props.players[ round.winner ].name : 'Draw'}</span>
+                <span className={round.winner ? "scores__player" : "scores__draw"}>{round.winner ? players[ round.winner ].name : 'Draw'}</span>
               </div>
               <div className="scores__play">
                 <span className="scores__move">

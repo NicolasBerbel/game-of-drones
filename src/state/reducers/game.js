@@ -10,6 +10,7 @@ const initialState = {
   winner: null,
   scores: {},
   rounds: [],
+  moves: {},
 };
 
 function computeScores( rounds ) {
@@ -44,6 +45,7 @@ export default function game(state = initialState, action) {
         ...state,
         started: true,
         startedAt: new Date().getTime(),
+        moves: action.moves,
         players: action.players
       };
     case actions.END_GAME:

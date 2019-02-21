@@ -5,18 +5,33 @@ const initialState = {
   isPosting: false,
   games: {},
   localGames: {},
+  modalActive: false,
 };
+
+const localGamesFromStorage = localStorage.getItem('statistics.localGames');
+if ( !!localGamesFromStorage ) {
+  initialState.localGames = JSON.parse(localGamesFromStorage);
+}
 
 export default function statistics(state = initialState, action) {
   switch (action.type) {
-    case actions.ADD_GAME_TO_LOCAL_STATISTICS:
+    case actions.TOGGLE_STATISTICS_MODAL:
       return {
+        ...state,
+        modalActive: action.active,
+      }
+    case actions.ADD_GAME_TO_LOCAL_STATISTICS:
+      const newState = {
         ...state,
         localGames: {
           ...state.localGames,
           [action.game.startedAt]: action.game,
         }
       }
+
+      localStorage.setItem('statistics.localGames', JSON.stringify(newState.localGames));
+      
+      return newState;
     case actions.FETCH_GAMES_REQUEST:
       return {
         ...state,
@@ -43,10 +58,15 @@ export default function statistics(state = initialState, action) {
         isPosting: true,
       };
     case actions.POST_GAMES_SUCCESS:
+      const localGames = Object.keys(action.gamesSent).reduce((localGames, gameIdSent) => {
+        delete localGames[ gameIdSent ];
+        return localGames;
+      }, {...state.localGames});
+
       return {
         ...state,
         isPosting: false,
-        localGames: false
+        localGames,
       };
     case actions.POST_GAMES_FAILURE:
       return {

@@ -1,42 +1,32 @@
 import React, { Component } from 'react';
+import GameList from './game-list';
+import Modal from './modal';
 
 class Statistics extends Component {
+  
   render() {
+    const { games, localGames, postGames, modalActive, toggleStatisticsModal } = this.props;
     return (
       <div className="statistics">
-        {
-          !!Object.keys(this.props.localGames).length &&
-          <div>
-            <h3>Local games played</h3>
-            {Object.keys(this.props.localGames).reverse().map( id => {
-              const game = this.props.localGames[ id ];
-              const winner = game.players[game.winner];
-
-              return (
-                <div key={id}>
-                  {new Date( game.startedAt ).toLocaleString()}: Winner: <b>{winner.name}</b> 
-                </div>
-              );
-            })}
-            <button onClick={this.props.postGames.bind(null, this.props.localGames)}>Upload my statistics!</button>
-          </div>
-        }
-        {
-          !!Object.keys(this.props.games).length &&
-          <div>
-            <h3>Global games played</h3>
-            {Object.keys(this.props.games).reverse().map( id => {
-              const game = this.props.games[ id ];
-              const winner = game.players[game.winner];
-
-              return (
-                <div key={id}>
-                  {new Date( game.startedAt ).toLocaleString()}: Winner: <b>{winner.name}</b> 
-                </div>
-              );
-            })}
-          </div>
-        }
+        <Modal title="Statistics" active={modalActive} onClose={toggleStatisticsModal.bind(null, false)}>
+          {
+            !!Object.keys(localGames).length && <>
+              <GameList uploadable={true} onUpload={postGames} games={localGames} title={
+                <>
+                Local games
+                <button className="button button--success box--shadow statistics__upload" onClick={postGames.bind(null, localGames)}>
+                  Upload all
+                </button>
+                </>
+                }/>
+              
+            </>
+          }
+          {
+            !!Object.keys(games).length &&
+            <GameList games={games} title="Global games" />
+          }
+        </Modal>
       </div>
     );
   }

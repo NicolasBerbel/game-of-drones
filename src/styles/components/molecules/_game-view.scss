@@ -1,0 +1,41 @@
+.game-view {
+  $this: &;
+  position: relative;
+  border-left: 3px solid theme-color(secondary);
+  border-radius: 3px;
+
+  ~ #{$this} {
+    margin-top: $gutter * 2;
+  }
+
+  &__date {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: type-size(7);
+    background-color: theme-color(secondary);
+    color: color-yiq( theme-color(secondary) );
+    // border-radius: 3px;
+    padding: 0 .6em;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__title {
+    flex: 1 0 auto;
+  }
+
+  &__controls {
+    flex: 0 0 auto;
+    display: inline-flex;
+  }
+
+  &__control {
+    margin-left: 5px;
+  }
+}

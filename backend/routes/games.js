@@ -5,7 +5,7 @@ const gamesRef = db.ref('games');
 
 module.exports = [
   (app) => app.get('/games', asyncRoute(async (req, res) => {
-    gamesRef.orderByChild('createdOn').limitToLast(10).once('value', (snapshot) => {
+    gamesRef.orderByChild('createdOn').limitToLast(30).once('value', (snapshot) => {
       return res.json( snapshot.val() );
     });
   })),

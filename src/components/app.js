@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import GameContainer from '../containers/game';
 import RegisterContainer from '../containers/register';
-import Bar from './bar';
+import BarContainer from '../containers/bar';
 import StatisticsContainer from '../containers/statistics';
 
 class App extends Component {
   render() {
     return (
       <div className="app">
-        <Bar />
+        <BarContainer />
         <StatisticsContainer />
         <div className="container">
           <div className="screen">

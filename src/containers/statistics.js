@@ -4,17 +4,19 @@ import Statistics from '../components/statistics';
 import state from '../state';
 
 const mapStateToProps = (state) => {
-  const {games, localGames} = state.statistics;
+  const {games, localGames, modalActive } = state.statistics;
   return {
     games,
-    localGames
+    localGames,
+    modalActive
   };
 }
 
-const { fetchGames, postGames } = state.actions;
+const { fetchGames, postGames, toggleStatisticsModal } = state.actions;
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchGames: () => dispatch(fetchGames()),
+    toggleStatisticsModal: ( e ) => dispatch(toggleStatisticsModal( e )),
     postGames: (games) => dispatch(postGames(games)),
   };
 }

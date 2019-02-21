@@ -58,10 +58,11 @@
     transform: translateX(1.3em);
     margin-bottom: 0;
     font-weight: $font-weight-normal;
-    transition: transform .3s ease 0s, font-weight .2s ease 0s, font-size .2s ease 0s;
+    transition: transform .3s ease 0s, font-weight .2s ease 0s, font-size .2s ease 0s, opacity .5s ease 0s;
     transform-origin: 0;
     font-size: type-size(7);
     line-height: 2;
+    opacity: .6;
     
     #{$this}--filled &,
     #{$this}--focused & {
@@ -71,6 +72,7 @@
       color: theme-color( secondary );
       font-weight: $font-weight-bold;
       transform: translate(0, -2.5em);
+      opacity: 1;
     }
 
   }

@@ -1,5 +1,6 @@
 .winner-message {
   &__title {
+    font-weight: $font-weight-normal;
     padding: $gutter * 2 0;
     margin-bottom: 0;
   }

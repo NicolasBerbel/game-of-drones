@@ -3,10 +3,11 @@ import Register from '../components/register';
 import state from '../state';
 
 const mapStateToProps = (state) => {
-  const {players} = state;
+  const {players, moves} = state;
 
   return {
     players,
+    moves
   };
 }
 
@@ -14,7 +15,7 @@ const { editPlayer, startGame } = state.actions;
 const mapDispatchToProps = (dispatch) => {
   return {
     editPlayer: (id, name) => dispatch(editPlayer(id, name)),
-    startGame: (players) => dispatch(startGame(players)),
+    startGame: (game) => dispatch(startGame(game)),
   };
 }
 

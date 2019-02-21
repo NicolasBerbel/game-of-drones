@@ -6,6 +6,15 @@ export function addGameToLocalStatistics(game) {
   }
 }
 
+export const TOGGLE_STATISTICS_MODAL = 'TOGGLE_STATISTICS_MODAL';
+export function toggleStatisticsModal(active = false) {
+  return {
+    type: TOGGLE_STATISTICS_MODAL,
+    active
+  }
+}
+
+
 export function fetchGames() {
   return dispatch => {
     dispatch(fetchGamesRequest());
@@ -52,7 +61,7 @@ export function postGames( games ) {
       mode: 'cors'
     })
       .then(response => response.json())
-      .then(json => dispatch(postGamesSuccess(json)))
+      .then(json => dispatch(postGamesSuccess(json, games)))
       .catch(err => dispatch(postGamesFailure(err)));
   }
 }
@@ -73,10 +82,11 @@ export function postGamesFailure(status) {
 }
 
 export const POST_GAMES_SUCCESS = 'POST_GAMES_SUCCESS';
-export function postGamesSuccess(status) {
+export function postGamesSuccess(status, gamesSent) {
   return {
     type: POST_GAMES_SUCCESS,
     ...status,
+    gamesSent
   }
 }
 

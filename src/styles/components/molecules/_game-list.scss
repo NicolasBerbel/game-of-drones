@@ -1,0 +1,12 @@
+.game-list {
+  $this: &;
+  padding-top: $gutter;
+
+  ~ #{$this} {
+    padding-top: $gutter * 3;
+  }
+
+  &__items {
+    padding-top: 1em;
+  }
+}

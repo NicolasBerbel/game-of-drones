@@ -32,11 +32,11 @@ class Register extends Component {
   }
 
   handleStart(){
-    const {startGame, players} = this.props;
+    const {startGame, players, moves} = this.props;
 
     if ( !this.canStart() ) return;
 
-    startGame( players );
+    startGame( {players, moves} );
   }
 
   canStart( props = this.props ) {
@@ -50,6 +50,10 @@ class Register extends Component {
 
     return (
       <div className="register">
+        
+        <h2 className="register__title game__title">
+        Game of Drones
+        </h2>
         <h5 className="register__title">
           {canStart ? 'Click start to begin the fight!' : 'Enter player\'s names:'}
         </h5>
@@ -68,7 +72,7 @@ class Register extends Component {
         <div>
           <button
             disabled={!canStart}
-            className="button button--primary button--outline button--block button--small"
+            className="button button--primary button--outline button--block"
             onClick={this.handleStart}
           >{canStart ? 'Start!' : 'Enter player names to continue.'}</button>
         </div>
