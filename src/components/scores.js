@@ -34,7 +34,7 @@ class Scores extends Component {
       </>}
       {/* {!!rounds.le} */}
       {/* <div className="scores__items"> */}
-        {rounds.map((round) => {
+        {[...rounds].reverse().map((round) => {
           return (
             <div key={round.round} className="scores__item">
               <div className="scores__info">

@@ -63,7 +63,7 @@ export default function game(state = initialState, action) {
         action.round,
       ];
       const scores = computeScores( rounds );
-      const winner = checkWinner( scores, 3 );
+      const winner = checkWinner( scores, action.roundsToWin );
 
       const game = {
         ...state,

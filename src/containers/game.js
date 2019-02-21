@@ -13,13 +13,14 @@ const mapStateToProps = (state, ownProps) => {
   };
 }
 
-const { endGame, restartGame, endRound, updateScores, addGameToLocalStatistics } = state.actions;
+const { endGame, restartGame, endRound, updateScores, addGameToLocalStatistics, toggleStatisticsModal } = state.actions;
 const mapDispatchToProps = (dispatch) => {
   return {
     updateScores: (scores) => dispatch(updateScores(scores)),
-    endRound: (round) => dispatch(endRound(round)),
+    endRound: (round, roundsToWin) => dispatch(endRound(round, roundsToWin)),
     endGame: (game) => dispatch(endGame(game)),
     addGameToLocalStatistics: (game) => dispatch(addGameToLocalStatistics(game)),
+    toggleStatisticsModal: () => dispatch(toggleStatisticsModal(true)),
     restartGame: () => dispatch(restartGame()),
   };
 }

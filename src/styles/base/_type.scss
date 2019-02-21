@@ -27,3 +27,9 @@ small,
   font-size: 80%;
   font-weight: $font-weight-normal;
 }
+
+.type--label {
+  font-size: type-size(8);
+  color: theme-color(secondary);
+  font-weight: $font-weight-bold;
+}

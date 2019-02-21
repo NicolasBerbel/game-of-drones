@@ -1,12 +1,36 @@
 .input {
   $this: &;
   position: relative;
-  margin-top: 2em;
-  margin-bottom: 2em;
   box-shadow: 0 1px 2px 0 rgba($dark, .2);
   transition: box-shadow .2s ease 0s;
   border-radius: 3px;
   background-color: $white;
+  flex: 1 0;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+  &__prepend,
+  &__append {
+    flex: 0 0;
+  }
+
+  &__prepend {
+    margin-right: 5px;
+  }
+
+  &__append {
+    margin-left: 5px;
+    display: flex;
+
+    *:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
   
   &--filled {
     box-shadow: 0 2px 3px 0 rgba($dark, .2);
@@ -68,11 +92,9 @@
     #{$this}--focused & {
       height: auto;
       bottom: auto;
-      font-size: type-size(8);
-      color: theme-color( secondary );
-      font-weight: $font-weight-bold;
       transform: translate(0, -2.5em);
       opacity: 1;
+      @extend .type--label;
     }
 
   }

@@ -25,7 +25,7 @@ $theme-colors: (
 $dark: $primary-text-color;
 
 // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold: 165;
+$yiq-contrasted-threshold: 191;
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
 $yiq-text-dark: $primary-text-color;

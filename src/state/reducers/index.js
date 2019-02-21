@@ -7,7 +7,6 @@ import statistics from './statistics';
 
 const reducers = combineReducers({
   debug: (state = {}, action) => {
-    // console.log( state, action );
     return {
       ...state,
       [new Date().getTime()]: action,

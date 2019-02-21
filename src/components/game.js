@@ -17,26 +17,28 @@ class Game extends Component {
   }
 
   render() {
-    const { game, moves, players, endRound, restartGame } = this.props;
+    const { game, moves, players, endRound, restartGame, settings } = this.props;
     const { finished, round, winner } = game;
     return (
-      <div className="game">
-        <div className="game__board">
-          <div className="container-fluid">
-          {
-            (!finished && <>
-              <h3 className="game__header">Game of Drones</h3>
-              <Round {...{moves, players, round }}
-                onEnd={endRound}
-              />
-            </> ) || (
-              <WinnerMessage playAgain={restartGame} player={players[winner]}/> 
-            )
-          }
+      // <>
+        <div className="game">
+          <div className="game__board">
+            <div className="container-fluid">
+            {
+              (!finished && <>
+                <h3 className="game__header">Game of Drones</h3>
+                <Round {...{moves, players, round }}
+                  onEnd={( round ) => endRound(round, settings.roundsToWin)}
+                />
+              </> ) || (
+                <WinnerMessage openScores={this.props.toggleStatisticsModal} playAgain={restartGame} player={players[winner]}/> 
+              )
+            }
+            </div>
           </div>
+          <Scores {...{game}} />
         </div>
-        <Scores {...{game}} />
-      </div>
+      // </>
     );
   }
 }

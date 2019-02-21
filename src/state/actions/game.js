@@ -23,10 +23,11 @@ export function restartGame() {
 }
 
 export const END_ROUND = 'END_ROUND';
-export function endRound( round ) {
+export function endRound( round, roundsToWin ) {
   return {
     type: END_ROUND,
-    round
+    round,
+    roundsToWin
   }
 }
 export const UPDATE_SCORES = 'UPDATE_SCORES';

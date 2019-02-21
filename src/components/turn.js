@@ -32,7 +32,7 @@ class Turn extends Component {
       if(!this.state.started){
         return (
           <div className="turn box">
-            <div className="turn--start-message">Ensure nobody is watching your move and then press start!</div>
+            <div className="turn--start-message"><b>{player.name}</b>, it's your turn, ensure nobody is watching your move and then press start!</div>
             <button className="turn--start-button button button--small button--wide button--rounded button--success" onClick={this.handleStart}>Start move</button>
           </div>
         );

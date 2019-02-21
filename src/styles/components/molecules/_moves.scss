@@ -1,17 +1,17 @@
 .moves {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // flex-wrap: wrap;
+  // align-items: center
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   width: 100%;
-  // margin: $gutter 0 0;
-  // background-color: theme-color(secondary);
-  // color: color-yiq( theme-color(secondary) );
   padding: 0 5px;
   position: relative;
   
   &__item {
-    // position: relative;
+    background: $white;
     margin: 10px 5px;
     flex: 1;
     padding-top: 2em;

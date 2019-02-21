@@ -1,6 +1,6 @@
 import actions from '../actions';
 
-const initialState = {
+const defaultState = {
   paper: {
     'name': 'Paper',
     'wins': 'rock'
@@ -13,16 +13,32 @@ const initialState = {
     'name': 'Scissor',
     'wins': 'paper'
   },
-  hulk: {
-    'name': 'Hulk',
-    'wins': 'paper'
-  },
 };
+
+let initialState = defaultState;
+
+const localMovesFromStorage = localStorage.getItem('moves');
+if (!!localMovesFromStorage) {
+  try {
+    initialState = JSON.parse(localMovesFromStorage);
+  } catch (e) {
+    initialState = defaultState;
+  }
+}
 
 export default function moves(state = initialState, action) {
   switch (action.type) {
-    case actions.ADD_MOVE:
-      return state;
+    case actions.UPDATE_MOVES:
+      const newState = {
+        ...state,
+        ...action.moves,
+      };
+      
+      localStorage.setItem('moves', JSON.stringify(newState))
+      return newState;
+    case actions.RESET_SETTINGS:
+      localStorage.removeItem('moves');
+      return defaultState;
     default:
       return state;
   }

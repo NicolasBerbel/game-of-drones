@@ -50,13 +50,10 @@ class Register extends Component {
 
     return (
       <div className="register">
-        
-        <h2 className="register__title game__title">
-        Game of Drones
-        </h2>
-        <h5 className="register__title">
+        <h2 className="register__title game__title">Game of Drones</h2>
+        <p className="h5 register__title">
           {canStart ? 'Click start to begin the fight!' : 'Enter player\'s names:'}
-        </h5>
+        </p>
         {Object.keys(players).map( (id) => {
           const player = players[id];
           return <Input

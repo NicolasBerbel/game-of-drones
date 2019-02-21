@@ -2,4 +2,8 @@
 
 html {
   font-size: #{$root-font-size}px;
+
+  @include media-breakpoint-up(xl) {
+    font-size: viewport-size(18);
+  }
 }

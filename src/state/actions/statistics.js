@@ -14,12 +14,11 @@ export function toggleStatisticsModal(active = false) {
   }
 }
 
-
 export function fetchGames() {
   return dispatch => {
     dispatch(fetchGamesRequest());
 
-    return fetch('http://localhost/games', {mode: 'cors'})
+    return fetch(`${process.env.NODE_ENV === 'production' ? '' : 'http://localhost'}/games`, {mode: 'cors'})
       .then( response => response.json() )
       .then( json => dispatch(fetchGamesSuccess(json)))
       .catch( err => dispatch(fetchGamesFailure(err)));
@@ -52,7 +51,7 @@ export function fetchGamesSuccess(games) {
 export function postGames( games ) {
   return ( dispatch, getState ) => {
     dispatch(postGamesRequest());
-    return fetch('http://localhost/games', {
+    return fetch(`${process.env.NODE_ENV === 'production' ? '' : 'http://localhost'}/games`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",

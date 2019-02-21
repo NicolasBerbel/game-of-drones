@@ -211,7 +211,7 @@ $button-hovers: (
       }
 
       &#{$this}--border-bottom {
-        background-color: transparent;
+        background-color: $white;
         color: $color;
 
         &:after {

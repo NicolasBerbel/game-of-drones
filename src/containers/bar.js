@@ -4,19 +4,17 @@ import Bar from '../components/bar';
 import state from '../state';
 
 const mapStateToProps = (state) => {
-  // const {games, localGames, modalActive } = state.bar;
-  // return {
-  //   games,
-  //   localGames,
-  //   modalActive
-  // };
-  return {};
+  return {
+    game: state.game
+  };
 }
 
-const { toggleStatisticsModal } = state.actions;
+const { toggleStatisticsModal, toggleSettingsModal, restartGame } = state.actions;
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleStatisticsModal: ( e ) => dispatch(toggleStatisticsModal( e )),
+    toggleSettingsModal: ( e ) => dispatch(toggleSettingsModal( e )),
+    restartGame: () => dispatch(restartGame()),
   };
 }
 

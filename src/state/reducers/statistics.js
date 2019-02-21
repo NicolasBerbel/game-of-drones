@@ -10,7 +10,11 @@ const initialState = {
 
 const localGamesFromStorage = localStorage.getItem('statistics.localGames');
 if ( !!localGamesFromStorage ) {
-  initialState.localGames = JSON.parse(localGamesFromStorage);
+  try {
+    initialState.localGames = JSON.parse(localGamesFromStorage);
+  } catch (e){
+    initialState.localGames = {};
+  }
 }
 
 export default function statistics(state = initialState, action) {
@@ -62,6 +66,8 @@ export default function statistics(state = initialState, action) {
         delete localGames[ gameIdSent ];
         return localGames;
       }, {...state.localGames});
+
+      localStorage.setItem('statistics.localGames', JSON.stringify(localGames));
 
       return {
         ...state,
