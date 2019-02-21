@@ -4,10 +4,9 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bootstrap": "4.3.1",
     "express": "^4.16.4",
     "firebase-admin": "^7.0.0",
-    "hapi": "^18.1.0",
-    "next": "^8.0.1",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.0",
@@ -18,11 +17,16 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "nodemon backend"
+    "start": "concurrently --kill-others-on-fail \"yarn sass:watch\" \"yarn react:start\"",
+    "build": "yarn sass:build && yarn react:build",
+    "server": "node backend",
+    "server:dev": "nodemon backend",
+    "react:start": "react-scripts start",
+    "react:build": "react-scripts build",
+    "react:test": "react-scripts test",
+    "react:eject": "react-scripts eject",
+    "sass:watch": "node-sass -w --include-path=node_modules src/styles/index.scss -o src",
+    "sass:build": "node-sass --include-path=node_modules --output-style=compressed src/styles/index.scss -o src"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,6 +38,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "concurrently": "^4.1.0",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.10"
   }
 }

@@ -4,10 +4,12 @@ import * as settings from './settings';
 import * as game from './game';
 import * as statistics from './statistics';
 
-export const actions = {
+const actions = {
   ...moves,
   ...players,
   ...settings,
   ...game,
   ...statistics,
 };
+
+export default actions;

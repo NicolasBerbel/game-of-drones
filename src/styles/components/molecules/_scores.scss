@@ -1,0 +1,114 @@
+.scores {
+  @extend .box;
+  font-size: type-size(6);
+  background-color: $gray-200;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px 0 rgba($dark, .05) inset;
+  margin-top: $gutter;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0);
+  transition: transform .3s ease, opacity .3s ease, visibility .3s ease;
+
+  &:empty {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, -30px);
+    // display: none;
+  }
+
+  &__title {
+    padding-bottom: .5em;
+    position: relative;
+    margin-bottom: $gutter;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 40%;
+      right: 40%;
+      width: 20%;
+      // box-shadow: 0 1 20px rgba($dark, .05);
+      height: 1px;
+      background-color: rgba($dark, .05);
+      // border-radius: $gutter;
+    }
+  }
+
+  &__players {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: type-size(5);
+    margin-bottom: $gutter * 2;
+
+    * {
+      order: 2;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    :first-child {
+      order: 0;
+    }
+
+    &:after {
+      content: '×';
+    }
+  }
+  
+  &__item {
+    margin-bottom: $gutter;
+    padding-bottom: $gutter;
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba($dark, .05);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:after {
+      content: '';
+      flex: 1 1 0;
+      height: 1px;
+      order: 1;
+      background-color: rgba($dark, .2);
+    }
+  }
+
+  &__info {
+    flex: 1;
+    order: 0;
+    padding-right: $gutter;
+  }
+  
+  &__play {
+    flex: 1;
+    order: 2;
+    padding-left: $gutter;
+  }
+
+  &__winner,
+  &__player {
+    color: theme-color(success);
+    font-weight: $font-weight-bold;
+  }
+  
+  &__losing,
+  &__draw {
+    color: theme-color(warning);
+  }
+
+  &__looser {
+    color: theme-color(danger);
+    text-decoration: line-through;
+  }
+
+}

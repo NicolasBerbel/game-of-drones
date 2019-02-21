@@ -1,4 +1,4 @@
-import { actions } from '../actions';
+import actions from '../actions';
 
 const initialState = {
   started: false,
@@ -13,6 +13,11 @@ const initialState = {
 };
 
 function computeScores( rounds ) {
+  const initialScores = Object.keys(rounds[0].moves).reduce( (acc, player) => {
+    acc[player] = 0;
+    return acc;
+  }, {});
+
   const scores = rounds.reduce((acc, round) => {
     if (round.winner) {
       acc[round.winner] = acc[round.winner] || 0;
@@ -20,7 +25,8 @@ function computeScores( rounds ) {
     }
 
     return acc;
-  }, {});
+  }, initialScores);
+
   return scores;
 }
 

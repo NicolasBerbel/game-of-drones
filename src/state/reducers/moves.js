@@ -1,10 +1,6 @@
-import { actions } from '../actions';
+import actions from '../actions';
 
 const initialState = {
-  scissor: {
-    'name': 'Scissor',
-    'wins': 'paper'
-  },
   paper: {
     'name': 'Paper',
     'wins': 'rock'
@@ -12,6 +8,14 @@ const initialState = {
   rock: {
     'name': 'Rock',
     'wins': 'scissor'
+  },
+  scissor: {
+    'name': 'Scissor',
+    'wins': 'paper'
+  },
+  hulk: {
+    'name': 'Hulk',
+    'wins': 'paper'
   },
 };
 

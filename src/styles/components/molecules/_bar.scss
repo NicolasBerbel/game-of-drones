@@ -1,0 +1,7 @@
+.bar {
+  display: flex;
+  box-shadow: 0 2px 3px 0 rgba($dark, .2);
+  border-top: 5px solid $primary-color-dark;
+  background-color: theme-color(primary);
+  color: $primary-color-text;
+}

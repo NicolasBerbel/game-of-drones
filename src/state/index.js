@@ -1,6 +1,6 @@
-import { actions } from './actions';
-import { reducers } from './reducers';
-import { store } from './store';
+import actions from './actions';
+import reducers from './reducers';
+import store from './store';
 import socket from './socket';
 
 export default {

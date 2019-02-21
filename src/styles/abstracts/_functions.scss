@@ -1,0 +1,15 @@
+@import "bootstrap/scss/functions";
+
+@function viewport-size($size: 10, $viewport: 1440, $unit: vw) {
+  $size: $size * 100;
+  @return #{($size/1440)}#{$unit};
+}
+
+@function rem-size($size: 10, $rem: 16, $unit: rem) {
+  @return #{($size/$rem)}#{$unit};
+}
+
+$font-sizes: () !default;
+@function type-size($type, $font-sizes: $font-sizes) {
+  @return nth($font-sizes, $type);
+}

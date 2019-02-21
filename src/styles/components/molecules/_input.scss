@@ -1,0 +1,77 @@
+.input {
+  $this: &;
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  box-shadow: 0 1px 2px 0 rgba($dark, .2);
+  transition: box-shadow .2s ease 0s;
+  border-radius: 3px;
+  background-color: $white;
+  
+  &--filled {
+    box-shadow: 0 2px 3px 0 rgba($dark, .2);
+  }
+  
+  &__control {
+    // Positioning
+    position: relative;
+    vertical-align: middle;
+
+    // Size
+    width: 100%;
+
+    // Box Model
+    padding: .75em 1.3em;
+    border-width: 2px;
+
+    // Type
+    font-size: type-size(8);
+
+    // Theme
+    color: $gray-900;
+    background-color: transparent;
+    border-color: transparent;
+    border-style: solid;
+    border-radius: 3px;
+
+    // Behaviour
+    opacity: 0;
+
+    #{$this}--filled &,
+    #{$this}--focused & {
+      opacity: 1;
+      outline: 0;
+    }
+
+    #{$this}--focused & {
+      border-bottom-color: theme-color(secondary);
+    }
+
+    // Transitions
+    transition: border-color .2s ease-in-out 0s;
+  }
+
+  &__label {
+    @include cover;
+    display: flex;
+    align-items: center;
+    transform: translateX(1.3em);
+    margin-bottom: 0;
+    font-weight: $font-weight-normal;
+    transition: transform .3s ease 0s, font-weight .2s ease 0s, font-size .2s ease 0s;
+    transform-origin: 0;
+    font-size: type-size(7);
+    line-height: 2;
+    
+    #{$this}--filled &,
+    #{$this}--focused & {
+      height: auto;
+      bottom: auto;
+      font-size: type-size(8);
+      color: theme-color( secondary );
+      font-weight: $font-weight-bold;
+      transform: translate(0, -2.5em);
+    }
+
+  }
+}

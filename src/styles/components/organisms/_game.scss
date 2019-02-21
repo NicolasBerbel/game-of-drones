@@ -1,0 +1,19 @@
+.game {
+  text-align: center;
+  
+  &__board {
+    background-color: $white;
+    box-shadow: 0 2px 3px 0 rgba($dark, .2);
+    border-radius: 3px;
+    position: relative;
+  }
+
+  &__header {
+    padding: $gutter * 3 0 $gutter;
+    transition: padding .3s ease;
+
+    @include media-breakpoint-up(sm) {
+      padding-top: $gutter * 2;
+    }
+  }
+}

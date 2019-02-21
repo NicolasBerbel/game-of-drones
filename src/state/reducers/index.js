@@ -5,7 +5,7 @@ import settings from './settings';
 import game from './game';
 import statistics from './statistics';
 
-export const reducers = combineReducers({
+const reducers = combineReducers({
   debug: (state = {}, action) => {
     // console.log( state, action );
     return {
@@ -19,3 +19,5 @@ export const reducers = combineReducers({
   game,
   statistics,
 });
+
+export default reducers;

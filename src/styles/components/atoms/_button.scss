@@ -1,0 +1,287 @@
+$button-colors: (
+  'primary': theme-color(primary),
+  'secondary': theme-color(secondary)
+);
+$button-hovers: (
+  'primary': darken(theme-color(primary), 5%),
+  'secondary': theme-color(secondary)
+);
+
+.button {
+  $this: &;
+  // Positioning
+  position: relative;
+  vertical-align: middle;
+  
+  // Layout
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  // Box Model
+  padding: 1em 1.8em;
+  border-width: 1px;
+  
+  // Type
+  text-align: center;
+  // line-height: 1.2;
+  font-size: type-size(8);
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+  // text-transform: uppercase;
+  
+  // Theme
+  color: $gray-900;
+  background-color: transparent;
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 3px;
+  
+  // Transitions
+  transition: opacity 150ms ease-out 0s, background-color 150ms ease-in 0s, color 150ms ease-in 0s, border-color 150ms ease-in 0s;
+  
+  // Basic actions
+  @at-root {
+    button#{$this} {
+      cursor: pointer;
+    }
+  }
+  
+  &:hover,
+  &:active,
+  &:focus,
+  &.active,
+  &#{$this}--active {
+    text-decoration: none;
+    outline: 0;
+    background-color: rgba($dark, .05);
+    color: $gray-900;
+  }
+  
+  // Icons
+  img,
+  &:not(#{$this}--icon) .svg-inline--fa,
+  &__icon {
+    max-width: 100%;
+    max-height: 1.5em;
+    margin-right: 7px;
+  }
+  
+  svg {
+    
+    &,
+    * {
+      fill: currentColor;
+    }
+  }
+  
+  /**
+  * Modifiers
+  **/
+  &[disabled],
+  &--disabled {
+    pointer-events: none;
+    opacity: .5;
+  }
+
+  // Size
+  &--block {
+    width: 100%;
+  }
+
+  &--wide {
+    padding-left: 2.4em;
+    padding-right: 2.4em;
+  }
+  
+  &--small {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  
+  &--icon {
+    height: 2em;
+    width: 2em;
+    flex-shrink: 0;
+    padding: 0;
+    font-size: 15px;
+  }
+  
+  // Layout
+  &--left {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  &--right {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  
+  // Themes
+  &--outline {
+    border-color: currentColor;
+    background-color: transparent;
+    
+    &:hover,
+    &:active,
+    &:focus,
+    &.active,
+    &#{$this}--active {
+      background-color: rgba($white, .3);
+    }
+  }
+  
+  &--rounded {
+    border-radius: 10000em;
+  }
+  
+  &--white {
+    background-color: $white;
+    color: theme-color(secondary);
+    
+    &:hover,
+    &:active,
+    &:focus,
+    &.active,
+    &#{$this}--active {
+      background-color: $gray-200;
+      color: theme-color(secondary);
+    }
+  }
+  
+  &--gray {
+    background-color: $gray-200;
+    text-transform: initial;
+    
+    &:hover,
+    &:active,
+    &:focus,
+    &.active,
+    &#{$this}--active {
+      background-color: $gray-400;
+    }
+  }
+
+  &--border-bottom {
+    border-width: 0;
+
+    &:after {
+      transition: background-color .2s ease;
+      position: absolute;
+      height: 4px;
+      border-radius: 0 0 3px 3px;
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  
+  @each $button, $color in $theme-colors {
+    $hover-color: darken($color, 8%);
+    
+    &--#{ $button } {
+      background-color: $color;
+      color: color-yiq($color);
+      
+      &:hover,
+      &:active,
+      &:focus,
+      &.active,
+      &#{$this}--active {
+        background-color: $hover-color;
+        color: color-yiq($hover-color);
+      }
+      
+      &#{$this}--outline {
+        background-color: transparent;
+        color: $color;
+        
+        &:hover,
+        &:active,
+        &:focus,
+        &.active,
+        &#{$this}--active {
+          background-color: $color;
+          border-color: $color;
+          color: color-yiq($color);
+        }
+      }
+
+      &#{$this}--border-bottom {
+        background-color: transparent;
+        color: $color;
+
+        &:after {
+          background-color: $color;
+        }
+
+        &:hover,
+        &:active,
+        &:focus,
+        &.active,
+        &#{$this}--active {
+          background-color: $color;
+          // border-color: $color;
+          color: color-yiq($color);
+
+          &:after {
+            background-color: $hover-color;
+          }
+        }
+      }
+    }
+  }
+  
+  @each $button, $color in $button-colors {
+    $hover-color: map-get($button-hovers, $button);
+    
+    &--#{ $button } {
+      background-color: $color;
+      color: color-yiq($color);
+      
+      &:hover,
+      &:active,
+      &:focus,
+      &.active,
+      &#{$this}--active {
+        background-color: $hover-color;
+        color: color-yiq($hover-color);
+      }
+      
+      &#{$this}--outline {
+        background-color: transparent;
+        color: $color;
+        
+        &:hover,
+        &:active,
+        &:focus,
+        &.active,
+        &#{$this}--active {
+          background-color: $color;
+          border-color: $color;
+          color: color-yiq($color);
+        }
+      }
+    }
+  }
+  
+  // Unstyler
+  &--null {
+    color: inherit;
+    
+    &:hover,
+    &:active,
+    &:focus {
+      color: inherit;
+    }
+  }
+  
+  &--fab {
+    @extend #{$this};
+    @extend #{$this}--rounded;
+    @extend #{$this}--icon;
+  }
+}

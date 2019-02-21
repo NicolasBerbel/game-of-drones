@@ -1,0 +1,9 @@
+.container-fluid {
+  @include make-container();
+}
+
+.container {
+  @extend .container-fluid;
+  transition: max-width .3s ease;
+  @include make-container-max-widths();
+}

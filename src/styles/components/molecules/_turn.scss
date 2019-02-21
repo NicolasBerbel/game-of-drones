@@ -1,0 +1,13 @@
+.turn {
+  &--start-message {
+    margin-bottom: $gutter;
+  }
+
+  &--start-button {
+    margin: 13px 0 12px;
+  }
+
+  &--move-message {
+    margin-bottom: $gutter;
+  }
+}

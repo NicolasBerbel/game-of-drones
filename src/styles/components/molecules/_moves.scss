@@ -1,0 +1,21 @@
+.moves {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  // margin: $gutter 0 0;
+  // background-color: theme-color(secondary);
+  // color: color-yiq( theme-color(secondary) );
+  padding: 0 5px;
+  position: relative;
+  
+  &__item {
+    // position: relative;
+    margin: 10px 5px;
+    flex: 1;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    text-transform: uppercase;
+  }
+}

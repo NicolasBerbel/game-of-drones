@@ -1,0 +1,5 @@
+@import "bootstrap/scss/root";
+
+html {
+  font-size: #{$root-font-size}px;
+}

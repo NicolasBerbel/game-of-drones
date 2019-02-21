@@ -1,0 +1,29 @@
+%heading {
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+@each $font-size in $font-sizes {
+  $index: index($font-sizes, $font-size);
+
+  @if ($index <= 6) {
+    h#{$index},
+    .h#{$index} {
+      @extend %heading;
+      font-size: $font-size,
+    }
+  }
+
+  .font-size--#{$index} {
+    font-size: $font-size;
+  }
+}
+
+small,
+.small {
+  font-size: 80%;
+  font-weight: $font-weight-normal;
+}

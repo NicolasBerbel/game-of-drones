@@ -1,0 +1,51 @@
+$font-family-sans-serif: 'Open Sans', sans-serif;
+
+$line-height-base: 1.45;
+$headings-line-height: 1.15;
+$headings-font-weight: 700;
+
+// @import '../themes/shadows';
+// @import '../themes/amber--green';
+// @import '../themes/green--deep-purple';
+// @import '../themes/indigo--pink';
+@import '../themes/pink--cyan';
+// @import '../themes/teal--deep-orange';
+
+$theme-colors: (
+  'primary': $primary-color,
+  'secondary': $accent-color,
+  'success': #8BC34A,
+  'info': #03A9F4,
+  'warning': #FFC107,
+  'danger': #F44336,
+);
+
+
+@import "bootstrap/scss/variables";
+$dark: $primary-text-color;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 165;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: $primary-text-color;
+$yiq-text-light: $white;
+
+$gutter: $grid-gutter-width / 2;
+
+$body-bg: $contrast-background;
+
+$root-font-size: 16;
+// Scale = Third minnor
+$font-sizes: (
+  rem-size(39.81, $root-font-size),
+  rem-size(33.18, $root-font-size),
+  rem-size(27.65, $root-font-size),
+  rem-size(23.04, $root-font-size),
+  rem-size(19.20, $root-font-size),
+  rem-size(16.00, $root-font-size),
+  rem-size(13.33, $root-font-size),
+  rem-size(11.11, $root-font-size),
+  rem-size(9.26, $root-font-size),
+);
+
