@@ -19,7 +19,7 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
-    "start": "npm run build && npm run server",
+    "start": "npm run server",
     "dev": "concurrently --kill-others-on-fail \"npm run sass:watch\" \"npm run react:start\" \"npm run server:dev\"",
     "build": "npm run sass:build && npm run react:build",
     "server": "node backend",
